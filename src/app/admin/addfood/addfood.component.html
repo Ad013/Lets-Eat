@@ -1,0 +1,68 @@
+<app-admin></app-admin>
+<div class="main main-raised">
+    <div class="section">
+      <div class="row"><br><br><br></div>
+<div class="container">
+  </div>
+  </div>
+</div>
+<div class="main main-raised">
+    <div class="section">
+<div class="container">
+    <div class="row">
+<div style="text-align:center">
+  <h1>
+    Add Food
+  </h1>
+ </div>
+ <div style="margin:20px 50px 20px 50px;">
+<form #Foodform="ngForm" (ngSubmit)="onSubmit(Foodform)" enctype="multipart/form-data">
+    <input type="hidden" name="_id" #_id="ngModel" ngModel [(ngModel)]="selectedFood._id">
+  <div class="form-group">
+    <label for="Food">Food Name</label>
+    <input type="text" name="Food" #qname="ngModel" ngModel [(ngModel)]="selectedFood.fname" class="form-control" id="inputdefault">
+  </div>
+  <div class="form-group">
+    <label for="Food">Food Description</label>
+    <input type="text" name="Food" #qname="ngModel" ngModel [(ngModel)]="selectedFood.fdesc" class="form-control" id="inputdefault">
+  </div>
+  <div class="form-group">
+    <label for="Food">Food Price</label>
+    <input type="number" name="Food" #qname="ngModel" ngModel [(ngModel)]="selectedFood.fprice" class="form-control" id="inputdefault">
+  </div>
+  <label for="Food">Food Picture</label>
+  <br>
+  <div class="form-group">
+
+<div class="fileinput text-center fileinput-new" data-provides="fileinput">
+        <div class="fileinput-new thumbnail img-circle img-raised">
+          <img src="assets/images/placeholder.jpg" alt="...">
+        </div>
+        <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
+        <div>
+          <span class="btn btn-raised btn-round btn-default btn-file">
+            <span class="fileinput-new">Add Photo</span>
+            <span class="fileinput-exists">Change</span>
+            <input type="hidden" value="" name="..."><input type="file" name="photo"  [(ngModel)]="selectedFood.fpic" class="form-control" id="inputdefault" (change)="onfileselect($event)" /><div class="ripple-container"></div></span>
+          <br>
+          <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove<div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 94px; top: 17.6094px; background-color: rgb(255, 255, 255); transform: scale(15.5);"></div></div></a>
+        </div>
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="Food">Food Category</label>
+  		<select [(ngModel)]="selectedFood.category_id" name="fooa" class="form-control">
+				<option [selected]="selectedFood.category_id == 'select'" value="select">SELECT CATEGORY</option>
+        <option  *ngFor="let cat of category" [value]="cat.categoryname">{{cat.categoryname}}</option>
+			</select>
+		</div>
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-success" id="inputdefault">
+  </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,56 @@
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-signup">
+          <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+            <div class="header header-primary text-center">
+              <h4 class="card-title">Log in</h4>
+              <div class="social-line">
+                <a href="#pablo" class="btn btn-just-icon btn-simple">
+                  <i class="fa fa-facebook-square"></i>
+                </a>
+                <a href="#pablo" class="btn btn-just-icon btn-simple">
+                  <i class="fa fa-twitter"></i>
+                </a>
+                <a href="#pablo" class="btn btn-just-icon btn-simple">
+                  <i class="fa fa-google-plus"></i>
+                </a>
+              </div>
+            </div>
+            <p class="description text-center">Or Be Classical</p>
+            <div class="content">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="material-icons">email</i>
+                </span>
+                <input type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email"
+                  [pattern]="emailRegex" required
+                  [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
+                <div *ngIf="signInForm.submitted && email.errors?.['pattern']">
+                  <label class="validation-message">Invalid email address.</label>
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="material-icons">lock_outline</i>
+                </span>
+                <input type="password" name="password" #password="ngModel" [(ngModel)]="model.password"
+                  placeholder="Password" required minlength="4"
+                  [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
+                <div *ngIf="signInForm.submitted && password.errors?.['minlength']">
+                  <label class="validation-message">Minimum 4 characters.</label>
+                </div>
+              </div>
+            </div>
+            <div class="footer text-center">
+              <input type="submit" value="Sign In" class="btn btn-primary btn-simple btn-wd btn-lg">
+            </div>
+          </form>
+
+        </div>
+        <!-- Error message -->
+        <div class="alert" *ngIf="serverErrorMessages">
+          {{serverErrorMessages}}
+        </div>
+      </div>
+    </div>

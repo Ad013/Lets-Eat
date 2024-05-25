@@ -1,0 +1,33 @@
+<app-admin></app-admin>
+<div class="main main-raised">
+    <div class="section">
+      <div class="row"><br><br><br></div>
+<div class="container">
+  </div>
+  </div>
+</div>
+<div class="main main-raised">
+    <div class="section">
+<div class="container">
+    <div class="row">
+<div style="text-align:center">
+  <h1>
+    Update Category
+  </h1>
+ </div>
+ <div style="margin:20px 50px 20px 50px;">
+<form #categoryform="ngForm" (ngSubmit)="onEdit(categoryform)">
+    <input type="hidden" name="_id" #_id="ngModel" ngModel [(ngModel)]="selectedCategory._id">
+  <div class="form-group">
+    <label for="category">Category Name</label>
+    <input type="text" name="categoryname" #qname="ngModel" ngModel [(ngModel)]="selectedCategory.categoryname" class="form-control" id="inputdefault">
+  </div>
+  <div class="form-group">
+    <input type="submit" class="btn btn-success" id="inputdefault">
+  </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>

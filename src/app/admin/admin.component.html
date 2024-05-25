@@ -1,0 +1,63 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+       </button>
+          <div class="card-avatar">
+              <img class="img" width='60' height='60' src="/assets/images/logo.png" />
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navigation-example">
+        <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="userDetails" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                  Welcome {{userDetails.fullName.split(' ')[0]}}<b class="caret"></b>
+                </a>
+                <div class="dropdown-menu">
+                    <li><a (click)="onLogout()">Log Out</a></li>
+                </div>
+              </li>
+          <li class="active"><a routerLink="/admin/home"><i class="material-icons">home</i>Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Category<b class="caret"></b>
+            </a>
+            <div class="dropdown-menu">
+                <li><a routerLink="../AddCategory">Add Category</a></li>
+                <li class="divider"></li>
+                  <li><a  routerLink="../ViewCategory">View Category</a></li>
+            </div>
+          </li>
+
+          <!--Food Menu-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Food<b class="caret"></b>
+            </a>
+            <div class="dropdown-menu">
+              <li><a routerLink="../AddFood">Add Food</a></li>
+              <li class="divider"></li>
+              <li><a  routerLink="../ViewFood">View Food</a></li>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="../reguser">View User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="../booking">View Booking</a>
+          </li>
+          <!--End Food Menu-->
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+<router-outlet></router-outlet>
