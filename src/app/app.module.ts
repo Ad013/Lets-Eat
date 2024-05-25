@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import {  FileUploadModule } from 'ng2-file-upload';
+import { NgUploaderService, NgxUploaderModule } from 'ngx-uploader';
 
 import { AdminComponent } from './admin/admin.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
@@ -57,14 +57,14 @@ import {HeaderAdminComponent} from './header-admin/header-admin.component';
     FormsModule,
     RouterModule,
     HttpClientModule,
-    FileUploadModule
+    NgxUploaderModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    },AuthGuard, UserService , CategoryService, FoodService, VwuserService, OrderService],
+    },AuthGuard, UserService , CategoryService, FoodService, VwuserService, OrderService, NgUploaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -8,6 +7,7 @@ import { CategoryService} from '../../shared/category.service';
 import { Category } from '../../shared/categoty.model';
 import { Food} from '../../shared/food.model';
 import { environment } from '../../../environments/environment';
+import { NgUploaderService } from 'ngx-uploader';
 const URL=environment.URL;
 
 @Component({
@@ -18,9 +18,10 @@ const URL=environment.URL;
 export class AddfoodComponent implements OnInit {
   public selectedFood = new Food();
   public category: any = [];
-  selectedfile: File | null = null;;
-  public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
-  constructor(private http: HttpClient, private router: Router, private catservice: CategoryService, private foodservice: FoodService) { }
+  selectedfile: File | null = null;
+  // public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+  constructor(private http: HttpClient, 
+    private ngUploaderService: NgUploaderService, private router: Router, private catservice: CategoryService, private foodservice: FoodService) { }
   ngOnInit() {
     this.getCategory();
   }

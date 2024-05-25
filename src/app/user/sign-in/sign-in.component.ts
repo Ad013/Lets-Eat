@@ -18,7 +18,6 @@ export class SignInComponent implements OnInit {
     password:'',
     roles:'',
   };
-  emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   serverErrorMessages: string;
   public adminrole = [];
   ngOnInit() {
@@ -27,15 +26,20 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(form : NgForm){
-    this.userService.login(form.value).subscribe(
-      res => {
+    this.userService.login(form.value).subscribe({
+      next: (res) => {
         this.userService.setToken(res['token']);
         this.router.navigateByUrl('/admin/home');
+        // ... Handle the response ...
       },
-      err => {
-        this.serverErrorMessages = err.error.message;
+      error: (err) => {
+        // ... Handle the error ...
+        // this.serverErrorMessages = err.error.message;
+      },
+      complete: () => {
+        // ... Handle the completion ...
       }
-    );
+    });
   }
 
 

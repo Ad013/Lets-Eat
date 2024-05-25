@@ -1,4 +1,4 @@
-const baseHost = 'https://lets-eat.clawiz.com/secure';
+const baseHost = 'https://lets-eat-server.clawiz.com';
 export const environment = {
     production: true,
     apiBaseUrl: `${baseHost}/api`,

@@ -24,7 +24,7 @@
                   <i class="material-icons">email</i>
                 </span>
                 <input type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email"
-                  [pattern]="emailRegex" required
+                  required
                   [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
                 <div *ngIf="signInForm.submitted && email.errors?.['pattern']">
                   <label class="validation-message">Invalid email address.</label>

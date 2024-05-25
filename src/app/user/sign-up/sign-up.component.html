@@ -35,7 +35,7 @@
                   <i class="material-icons">email</i>
                 </span>
                 <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email"
-                  placeholder="Email" required [pattern]="emailRegex"
+                  placeholder="Email" required
                   [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
                 <div *ngIf="signUpForm.submitted && email.errors">
                   <label *ngIf="email.errors['required']" class="validation-message">This field is required.</label>

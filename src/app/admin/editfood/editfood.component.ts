@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload';
 import { ActivatedRoute , Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -9,6 +8,7 @@ import { Category} from '../../shared/categoty.model';
 import {FoodService } from '../../shared/food.service';
 import { Food} from '../../shared/food.model';
 import { environment } from '../../../environments/environment';
+import { NgUploaderService } from 'ngx-uploader'; 
 
 const URL = environment.URL;
 
@@ -23,9 +23,11 @@ export class EditfoodComponent implements OnInit {
   public selectedFood = new Food();
   public category :any= [];
   selectedfile: File | null = null;
-  public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+  public uploader: NgUploaderService;
+  // public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
   constructor(private route: ActivatedRoute, private router: Router, private catservice: CategoryService ,
-    private fservice: FoodService, private http: HttpClient, private sanitizer: DomSanitizer) { }
+    private fservice: FoodService, private ngUploaderService: NgUploaderService,
+     private http: HttpClient, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
